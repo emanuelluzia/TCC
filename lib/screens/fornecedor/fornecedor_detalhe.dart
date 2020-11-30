@@ -42,15 +42,15 @@ class FornecedorDetalheScreen extends StatelessWidget {
                   ),
                   Padding(padding: const EdgeInsets.only(top: 8),
                     child: Text(
-                      'Distancia',
+                      'Distancia                                                Taxa',
                       style: TextStyle(
-                        color:Colors.grey[600],
+                        color:Colors.black,
                         fontSize: 13,
                       ),
                     ),
                   ),
                   Text(
-                    ' ${fornecedor.distancia.toStringAsFixed(2)} KM',
+                    ' ${fornecedor.distancia.toStringAsFixed(2)} KM                       ${fornecedor.taxa.toStringAsFixed(2)} ',
                     style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class FornecedorDetalheScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 16, bottom: 8),
                     child: Text(
-                      'Descrição',
+                      'Endereço',
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500
@@ -68,7 +68,7 @@ class FornecedorDetalheScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    fornecedor.address.rua,
+                    '${fornecedor.address.rua}, ${fornecedor.address.numero} - ${fornecedor.address.bairro}, ${fornecedor.address.cidade}, ${fornecedor.address.estado}, ${fornecedor.address.cep}',
                     style: const TextStyle(
                       fontSize: 16,
                     ),

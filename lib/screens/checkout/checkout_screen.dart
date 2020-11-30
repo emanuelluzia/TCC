@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:loja_virtual/common/price_card.dart';
 import 'package:loja_virtual/models/carrinho_manager.dart';
 import 'package:loja_virtual/models/checkout_manager.dart';
+import 'package:loja_virtual/models/fornecedor.dart';
 import 'package:loja_virtual/models/page_manager.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProxyProvider<CarrinhoManager, CheckoutManager>(

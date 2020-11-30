@@ -27,11 +27,11 @@ class CarrinhoManager extends ChangeNotifier{
 
   Future<void>_loadCarrinhoItem() async {
     final QuerySnapshot carrinhoSnap = await user.carrinhoReference.getDocuments();
-
     items = carrinhoSnap.documents.map(
             (d) => CarrinhoRoupa.fromDocument(d)..addListener(_onItemUpdated)
+
     ).toList();
-    print(items);
+    //print(items.data());
   }
 
   void addToCart(Roupas roupas, Fornecedor fornecedor){
@@ -80,7 +80,7 @@ class CarrinhoManager extends ChangeNotifier{
     }
 
     notifyListeners();
-    print(roupasPrice);
+
   }
 
   void _updateCarrinhoRoupa(CarrinhoRoupa carrinhoRoupa){

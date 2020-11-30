@@ -21,7 +21,7 @@ class RoupasScreen extends StatelessWidget {
         title: Consumer<RoupasManager>(
           builder: (_, roupasManager, __){
             if(roupasManager.search.isEmpty){
-                return const Text('Roupas');
+                return  Text('Roupas - Taxa : ${fornecedor.taxa.toStringAsFixed(2)} ');
             } else {
               return LayoutBuilder(
                   builder: (_, constraints){

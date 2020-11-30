@@ -46,7 +46,7 @@ class ConfirmationScreen extends StatelessWidget {
               ),
               Column(
                 children: order.items.map((e){
-                  return OrderRoupaTile(e);
+                  return OrderRoupaTile(e,order);
                 }).toList(),
               )
             ],

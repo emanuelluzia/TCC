@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/carrinho_manager.dart';
+import 'package:loja_virtual/models/fornecedor.dart';
 import 'package:provider/provider.dart';
 
 class PriceCard extends StatelessWidget {
@@ -17,7 +18,6 @@ class PriceCard extends StatelessWidget {
 
 
   final roupasPrice = carrinhoManager.roupasPrice;
-  //final fornecedorID = carrinhoManager.fornecedor.id;
 
 
     return Card(
@@ -35,22 +35,6 @@ class PriceCard extends StatelessWidget {
                   fontSize: 16,
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  const Text('Endereco'),
-                  Text('R\$ ${roupasPrice.toStringAsFixed(2)}')
-                ],
-              ),
-              const SizedBox(height: 12,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  const Text('Subtotal'),
-                  Text('R\$ ${roupasPrice.toStringAsFixed(2)}')
-                ],
-              ),
-              const Divider(),
               const SizedBox(height: 12,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -6,13 +6,14 @@ import 'package:loja_virtual/models/roupas.dart';
 class CarrinhoRoupa extends ChangeNotifier{
 
   CarrinhoRoupa.fromRoupa(this.roupas, this.fornecedor){
-    print(this.fornecedor.id);
     roupaId = roupas.id;
     fornecedorID = fornecedor.id;
     quantidade = 1;
+
   }
 
   CarrinhoRoupa.fromDocument(DocumentSnapshot document){
+
     id = document.documentID;
     roupaId = document.data['roupa_id'] as String;
     quantidade = document.data['quantidade'] as int;
@@ -27,7 +28,6 @@ class CarrinhoRoupa extends ChangeNotifier{
     firestore.document('users/$fornecedorID').get().then(
             (doc) {
           fornecedor = Fornecedor.fromDocument(doc);
-          notifyListeners();
         }
     );
 
@@ -35,6 +35,7 @@ class CarrinhoRoupa extends ChangeNotifier{
 
   CarrinhoRoupa.fromMap(Map<String,dynamic> map){
     roupaId = map['roupa_id'] as String;
+    fornecedorID = map['fornecedorID'] as String;
     quantidade = map['quantidade'] as int;
     fixedPrice = map['fixedPrice'] as num;
     firestore.document('roupas/$roupaId').get().then(
@@ -67,6 +68,7 @@ class CarrinhoRoupa extends ChangeNotifier{
 
   Map<String, dynamic> toCarrinhoItemMap(){
     return {
+
       'roupa_id': roupaId,
       'fornecedorID' : fornecedorID,
       'quantidade' : quantidade,
@@ -75,6 +77,7 @@ class CarrinhoRoupa extends ChangeNotifier{
 
   Map<String, dynamic> toOrderItemMap(){
     return {
+      'fornecedorID': fornecedorID,
       'roupa_id': roupaId,
       'quantidade' : quantidade,
       'fixedPrice' : fixedPrice ??  unitPrice,

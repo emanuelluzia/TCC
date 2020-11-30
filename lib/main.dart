@@ -97,7 +97,7 @@ class MyApp extends StatelessWidget {
               );
             case '/carrinho':
               return MaterialPageRoute(
-                  builder: (_) => CarrinhoScreen()
+                  builder: (_) => CarrinhoScreen(settings.arguments as Fornecedor)
               );
             case '/address':
               return MaterialPageRoute(

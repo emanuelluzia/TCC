@@ -41,12 +41,12 @@ class CarrinhoTile extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           child: Text(
-                            'Valor:',
+                            'Valor Original:       Valor + Taxa:',
                             style: TextStyle(fontWeight: FontWeight.w300),
                           ),
                         ),
                         Text(
-                          'R\$ ${carrinhoRoupa.unitPrice.toStringAsFixed(2)} Valor Original  ${carrinhoRoupa.roupas.price.toStringAsFixed(2)} TAXA ${carrinhoRoupa.fornecedor.taxa.toStringAsFixed(2)}',
+                          'R\$ ${carrinhoRoupa.roupas.price.toStringAsFixed(2)}           R\$ ${carrinhoRoupa.unitPrice.toStringAsFixed(2)}',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 16.0,

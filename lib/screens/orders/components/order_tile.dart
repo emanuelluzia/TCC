@@ -26,7 +26,7 @@ class OrderTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  order.formattedId,
+                  '${order.formattedId} ${order.fornecedor.name}',
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     color: primaryColor,
@@ -55,7 +55,7 @@ class OrderTile extends StatelessWidget {
         children: <Widget>[
           Column(
             children: order.items.map((e){
-              return OrderRoupaTile(e);
+              return OrderRoupaTile(e,order);
             }).toList(),
           ),
           if(showControls && order.status != Status.rejeitado && order.status != Status.transportando || !showControls && order.status == Status.transportando  )

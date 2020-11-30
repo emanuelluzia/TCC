@@ -37,7 +37,7 @@ class RoupaDetalheScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Text(
-                    roupa.name,
+              '${(roupa.name)}                    Taxa: ${(fornecedor.taxa).toStringAsFixed(2)}  ',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600
@@ -45,15 +45,15 @@ class RoupaDetalheScreen extends StatelessWidget {
                   ),
                   Padding(padding: const EdgeInsets.only(top: 8),
                   child: Text(
-                    'Valor',
+                    'Valor Original:                                           Valor + Taxa:',
                     style: TextStyle(
-                      color:Colors.grey[600],
+                      color:Colors.black,
                       fontSize: 13,
                     ),
                   ),
                   ),
                   Text(
-                    'R\$ Valor Original: ${roupa.price.toStringAsFixed(2)}  Taxa:${fornecedor.taxa}',
+                    'R\$ ${(roupa.price).toStringAsFixed(2)}                        R\$ ${(roupa.price + (roupa.price * fornecedor.taxa)).toStringAsFixed(2)}              ',
                     style: TextStyle(
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class RoupaDetalheScreen extends StatelessWidget {
                     child: RaisedButton(
                       onPressed: (){
                       context.read<CarrinhoManager>().addToCart(roupa,fornecedor);
-                      Navigator.of(context).pushNamed('/carrinho');
+                      Navigator.of(context).pushNamed('/carrinho', arguments: fornecedor);
                       },
                       color: primaryColor,
                       textColor: Colors.white,

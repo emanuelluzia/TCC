@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/carrinho_roupa.dart';
+import 'package:loja_virtual/models/order.dart';
 
 class OrderRoupaTile extends StatelessWidget {
 
-  const OrderRoupaTile(this.carrinhoRoupa);
+  const OrderRoupaTile(this.carrinhoRoupa,this.order);
 
+  final Order order;
   final CarrinhoRoupa carrinhoRoupa;
 
   @override

@@ -17,6 +17,18 @@ class Fornecedor extends ChangeNotifier{
     address = Address.fromMap(document.data['address'] as Map<String, dynamic>);
     //distancia = getDistancia(user.address.lat,user.address.long, address.lat, address.long);
   }
+  Fornecedor.fromDocument2(DocumentSnapshot document) {
+    id = document.documentID;
+    name = document['name'] as String;
+    email = document['email'] as String;
+    cpf = document['cpf'];
+    fornecedor = document['fornecedor'];
+    taxa = document['taxa'];
+
+
+    address = Address.fromMap(document.data['address'] as Map<String, dynamic>);
+    //distancia = getDistancia(user.address.lat,user.address.long, address.lat, address.long);
+  }
 
 //  dynamic  getDistancia(double lat_origem, double long_origem, double lat_destino, double long_destino ) async {
 //    double distancia = await Geolocator().distanceBetween (lat_origem, long_origem, lat_destino, long_destino);

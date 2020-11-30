@@ -10,6 +10,7 @@ class RoupasListTile extends StatelessWidget {
   final Roupas roupas;
   final Fornecedor fornecedor;
 
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -46,15 +47,15 @@ class RoupasListTile extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top:4),
                         child: Text(
-                          'Valor',
+                          'Valor Original:             Valor + Taxa:',
                           style: TextStyle(
-                            color: Colors.grey[400],
+                            color: Colors.black,
                             fontSize: 12,
                           ),
                         ),
                       ),
                       Text(
-                        'R\$ ${roupas.price.toStringAsFixed(2)} Taxa: ${fornecedor.taxa} ',
+                        'R\$ ${(roupas.price).toStringAsFixed(2)}              R\$ ${(roupas.price + (roupas.price * fornecedor.taxa)).toStringAsFixed(2)}              ',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
