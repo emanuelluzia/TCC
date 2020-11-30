@@ -34,8 +34,9 @@ class FornecedorManager extends ChangeNotifier{
    int i=0;
     for(DocumentSnapshot doc in snapshotFornecedores.documents)
       {
+        print( doc.data['address']['lat']);
         double distancia = await Geolocator().distanceBetween (user.address.lat, user.address.long, doc.data['address']['lat'], doc.data['address']['long']);
-        distancia /= 1000.0;
+        distancia /= 1000;
         allFornecedores[i].distancia = distancia;
         i++;
       }

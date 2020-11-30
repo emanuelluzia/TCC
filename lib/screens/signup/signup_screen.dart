@@ -128,7 +128,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       activeColor: Colors.grey,
                       checkColor: Colors.black,
                     ),
-                    const SizedBox( height:16),
+                    if(user.fornecedor==true )
+                      const SizedBox( height:16),
+                    TextFormField(
+                      decoration: const InputDecoration(hintText: 'TAXA'),
+                      enabled: !userManager.loading,
+                      validator: (cpf) {
+                        if (cpf.isEmpty)
+                          return 'Campo obrigatório';
+                        else if (cpf.length < 9)
+                          return 'CPF inválido';
+                        return null;
+                      },
+                      onSaved: (cpf) => user.cpf = cpf,
+                    ),
                     AddressCard(user),
 
                     SizedBox(

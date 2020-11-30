@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/admin_orders_manager.dart';
 import 'package:loja_virtual/models/carrinho_manager.dart';
@@ -20,10 +20,13 @@ import 'package:loja_virtual/screens/roupas/detalhe/roupa_detalhe_screen.dart';
 import 'package:loja_virtual/screens/roupas/roupas_screen.dart';
 import 'package:loja_virtual/screens/signup/signup_screen.dart';
 import 'package:loja_virtual/services/cepaberto_service.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   runApp(MyApp());
+//  final response = await CloudFunctions.instance.getHttpsCallable(functionName: 'helloWorld').call();
+//  print(response.data);
 }
 
 class MyApp extends StatelessWidget {

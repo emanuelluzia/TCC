@@ -33,7 +33,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               DrawerTitle(
                   iconData: Icons.list,
-                  title:'Produtos',
+                  title:'Criar Pedido',
                   page: 1,
               ),
               DrawerTitle(

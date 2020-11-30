@@ -11,9 +11,13 @@ class PriceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
   final carrinhoManager = context.watch<CarrinhoManager>();
+
+
   final roupasPrice = carrinhoManager.roupasPrice;
-  final fornecedorID = carrinhoManager.fornecedor.id;
+  //final fornecedorID = carrinhoManager.fornecedor.id;
 
 
     return Card(

@@ -42,7 +42,7 @@ class FornecedorDetalheScreen extends StatelessWidget {
                   ),
                   Padding(padding: const EdgeInsets.only(top: 8),
                     child: Text(
-                      'Valor',
+                      'Distancia',
                       style: TextStyle(
                         color:Colors.grey[600],
                         fontSize: 13,
@@ -50,7 +50,7 @@ class FornecedorDetalheScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'R\$ ${fornecedor.distancia.toStringAsFixed(2)}',
+                    ' ${fornecedor.distancia.toStringAsFixed(2)} KM',
                     style: TextStyle(
                         fontSize: 22.0,
                         fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class FornecedorDetalheScreen extends StatelessWidget {
                       color: primaryColor,
                       textColor: Colors.white,
                       child: Text(
-                        'Adicionar ao Carrinho',
+                        'Avançar',
                         style: const TextStyle(fontSize: 18),
                       ),
                     ),

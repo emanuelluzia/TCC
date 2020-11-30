@@ -54,7 +54,7 @@ class RoupasListTile extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'R\$ ${roupas.price.toStringAsFixed(2)} as ${fornecedor.email} ',
+                        'R\$ ${roupas.price.toStringAsFixed(2)} Taxa: ${fornecedor.taxa} ',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:loja_virtual/models/address.dart';
 
 class User{
@@ -39,6 +40,9 @@ class User{
 
   CollectionReference get carrinhoReference => Firestore.instance.document('users/$id').collection('carrinho');
 
+  CollectionReference get tokensReference => Firestore.instance.document('users/$id').collection('tokens');
+
+
   Future <void> saveData() async{
     await Firestore.instance.collection('users').document(id).setData(toMap());
   }
@@ -69,6 +73,13 @@ class User{
 //  }
 
 
-
+  Future<void> saveToken() async {
+    final token = await FirebaseMessaging().getToken();
+    print('token $token');
+    await tokensReference.document(token).setData({
+      'token': token,
+      'updatedAt': FieldValue.serverTimestamp(),
+    });
+  }
 
 }

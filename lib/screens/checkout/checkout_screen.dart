@@ -15,7 +15,7 @@ class CheckoutScreen extends StatelessWidget {
       lazy: false,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Pagamento'),
+          title: const Text('Confirmação de Pedido'),
           centerTitle: true,
         ),
         body: Consumer<CheckoutManager>(

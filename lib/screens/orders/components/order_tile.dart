@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:loja_virtual/models/order.dart';
+import 'package:loja_virtual/screens/orders/cancel_order_dialog.dart';
 import 'package:loja_virtual/screens/orders/components/order_roupa_tile.dart';
+import 'package:loja_virtual/screens/orders/exports_address_dialog.dart';
 
 class OrderTile extends StatelessWidget {
 
@@ -56,30 +58,39 @@ class OrderTile extends StatelessWidget {
               return OrderRoupaTile(e);
             }).toList(),
           ),
-          if(showControls && order.status != Status.rejeitado)
+          if(showControls && order.status != Status.rejeitado && order.status != Status.transportando || !showControls && order.status == Status.transportando  )
           SizedBox(
             height: 50,
             child: ListView(
               scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  FlatButton(
+                  if(order.status != Status.concluido  )
+                    FlatButton(
                     onPressed: (){
-
+                      showDialog(
+                          context: context,
+                          builder: (_) => CancelOrderDialog(order)
+                      );
                     },
                     textColor: Colors.red,
-                    child: const Text('Cancelar'),
+                    child:  Text(order.status == Status.pendente ?'Rejeitar': 'Cancelar' ),
                   ),
-                  FlatButton(
-                    onPressed: order.back,
-                    child: const Text('Recuar'),
-                  ),
+//                  FlatButton(
+//                    onPressed: order.back,
+//                    child: const Text('Voltar'),
+//                  ),
                   FlatButton(
                    onPressed: order.advance,
-                    child: const Text('Avançar'),
+                    textColor: Colors.green,
+                    child: Text( order.status == Status.pendente ? 'Aceitar' : (order.status == Status.transportando ? 'Entregue':'Finalizar')),
                   ),
+
                   FlatButton(
                     onPressed: (){
-
+                      showDialog(
+                          context: context,
+                          //builder: (_) => ExportAddressDialog(order.user.address)
+                      );
                     },
                     textColor: primaryColor,
                     child: const Text('Endereço'),

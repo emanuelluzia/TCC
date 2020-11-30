@@ -53,7 +53,7 @@ class RoupaDetalheScreen extends StatelessWidget {
                   ),
                   ),
                   Text(
-                    'R\$ ${roupa.price.toStringAsFixed(2)} as ${fornecedor.id}',
+                    'R\$ Valor Original: ${roupa.price.toStringAsFixed(2)}  Taxa:${fornecedor.taxa}',
                     style: TextStyle(
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,

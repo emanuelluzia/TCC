@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:loja_virtual/models/address.dart';
 import 'package:loja_virtual/models/carrinho_manager.dart';
 import 'package:loja_virtual/models/carrinho_roupa.dart';
 import 'package:loja_virtual/models/fornecedor.dart';
 //armazena os indices no banco de dados
-enum Status {rejeitado, pendente, preparando, transportando, concluido}
+enum Status {rejeitado, pendente,transportando,preparando,concluido}
 
 class Order{
 
@@ -13,11 +14,13 @@ class Order{
     userId = carrinhoManager.user.id;
     status = Status.pendente;
     fornecedorId = items[0].fornecedorID;
+    //address = carrinhoManager.add
+
+
   }
 
   Order.fromDocument(DocumentSnapshot doc){
     orderId = doc.documentID;
-
     items = (doc.data['items'] as List<dynamic>).map((e){
       return CarrinhoRoupa.fromMap(e as Map<String, dynamic>);
     }).toList();
@@ -32,7 +35,7 @@ class Order{
           fornecedor = Fornecedor.fromDocument(doc);
         }
     );
-
+    //address = Address.fromMap(doc.data['address'] as Map<String, dynamic>);
     status = Status.values[doc.data['status'] as int];
 
   }
@@ -45,6 +48,7 @@ class Order{
         'items': items.map((e) => e.toOrderItemMap()).toList(),
         'price' : price,
         'user' : userId,
+        //'address': address.toMap(),
         'fornecedor_id' : fornecedorId,
         'status': status.index,
         'date' : Timestamp.now(),
@@ -67,6 +71,8 @@ class Order{
 
   Fornecedor fornecedor;
 
+  Address address;
+
   String get formattedId => '#${orderId.padLeft(6, '0')}';
 
   String get statusText => getStatusText(status);
@@ -82,7 +88,7 @@ class Order{
   }
 
   Function() get advance {
-    return status.index <= Status.transportando.index ?
+    return status.index <= Status.preparando.index ?
         (){
       status = Status.values[status.index + 1];
       firestore.collection('orders').document(orderId).updateData(
@@ -108,6 +114,17 @@ class Order{
     }
   }
 
+  DocumentReference get firestoreRef =>
+      firestore.collection('orders').document(orderId);
+
+  void updateFromDocument(DocumentSnapshot doc){
+    status = Status.values[doc.data['status'] as int];
+  }
+
+  void rejeitado(){
+    status = Status.rejeitado;
+    firestoreRef.updateData({'status': status.index});
+  }
 
   @override
   String toString() {

@@ -13,6 +13,7 @@ class Fornecedor extends ChangeNotifier{
     fornecedor = document.data['fornecedor'];
     taxa = document.data['taxa'];
 
+
     address = Address.fromMap(document.data['address'] as Map<String, dynamic>);
     //distancia = getDistancia(user.address.lat,user.address.long, address.lat, address.long);
   }

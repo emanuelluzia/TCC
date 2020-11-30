@@ -33,6 +33,7 @@ class UserManager extends ChangeNotifier {
           email: user.email, password: user.password);
       //mandando o usuario do firebase para o _loadCurrentUser para obter os dados desse usuario
       await _loadCurrentUser(firebaseUser: result.user);
+      user.saveToken();
 
       onSuccess();
     } on PlatformException catch(e){
@@ -53,6 +54,7 @@ class UserManager extends ChangeNotifier {
     this.user = user;
 
     await user.saveData();
+    user.saveToken();
 
     onSuccess();
     }on PlatformException catch(e){
@@ -79,6 +81,8 @@ class UserManager extends ChangeNotifier {
       final DocumentSnapshot docUser =  await firestore.collection("users").document(currentUser.uid).get();
     //transformou os dados do firebase em um objeto User, olhar linha 7 do user.dart
      user = User.fromDocument(docUser);
+     user.saveToken();
+
       notifyListeners();
     }
   }

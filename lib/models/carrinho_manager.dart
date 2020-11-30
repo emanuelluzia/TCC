@@ -20,6 +20,7 @@ class CarrinhoManager extends ChangeNotifier{
 
     if(user != null){
       _loadCarrinhoItem();
+      //_loadUserAddress();
     }
 
   }

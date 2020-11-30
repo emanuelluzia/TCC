@@ -22,44 +22,93 @@ class FornecedorListTile extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: Row(
             children: <Widget>[
-              const SizedBox(width: 16,),
+              Expanded(
+
+                child:Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        ' ${fornecedor.name} ',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: Text(
+                          'Distância:',
+                          style: TextStyle(
+                            color:  Colors.black,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        ' ${fornecedor.distancia.toStringAsFixed(2)} KM ',
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w800,
+                            color: Colors.teal
+                        ),
+
+                      ),
+
+                    ]
+
+                ),
+              ),
+              const SizedBox(width: 10,),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Fornecedor:  ${fornecedor.name} ',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 4),
                       child: Text(
-                        'Distância:',
+                        'Taxa:',
                         style: TextStyle(
-                          color: Colors.red,
+                          color: Colors.black,
                           fontSize: 12,
                         ),
                       ),
                     ),
                     Text(
-                      ' ${fornecedor.distancia.toStringAsFixed(2)} KM  TAXA : 2.5',
+                      '${fornecedor.taxa} ',
                       style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.red
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800, color: Theme.of(context).primaryColor
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        'Bairro:',
+                        style: TextStyle(
+                          color:  Colors.black,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      '${fornecedor.address.bairro} ',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800, color: Theme.of(context).primaryColor
+                      ),
+                    ),
+
                   ],
                 ),
+
 
               )
             ],
           ),
         ),
+
       ),
     );
   }
